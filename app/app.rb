@@ -1,5 +1,6 @@
 require 'sinatra/base'
-require_relative 'datamapper_setup'
+require_relative './models/datamapper_setup'
+require_relative './models/user'
 
 class Makersbnb < Sinatra::Base
 
