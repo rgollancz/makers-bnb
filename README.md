@@ -63,3 +63,5 @@ So that I can rent a space
 I want to be able to sign up as a client
 
 ```
+
+[![Build Status](https://travis-ci.org/rgollancz/makers-bnb.svg?branch=master)](https://travis-ci.org/rgollancz/makers-bnb)
