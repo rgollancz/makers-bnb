@@ -1,6 +1,9 @@
 require 'sinatra/base'
+require_relative 'datamapper_setup'
 
 class Makersbnb < Sinatra::Base
+
+
   get '/' do
     'Hello Makersbnb!'
   end
