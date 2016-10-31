@@ -1,4 +1,5 @@
-require 'datamapper_setup'
+require_relative 'datamapper_setup'
+require 'dm-validations'
 
 class Space
   include DataMapper::Resource
@@ -9,7 +10,6 @@ class Space
   property :price, Float
   property :address, Text
 
-  has n, :bookings, :through => Resource
-  belongs to, :user
-
+  # has n, :bookings, :through => Resource
+  # belongs_to, :user
 end
