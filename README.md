@@ -33,6 +33,9 @@ As a host
 So clients know when my space is free
 I want to be able to list available dates
 
+As a host
+So I can approve a booking
+I want to be able to confirm
 
 -------
 Clients
@@ -42,12 +45,20 @@ As a client
 So I can rent a property
 I want to be able to view spaces
 
+As a client
+So that I can't be disappointed
+I don't want to be able to book unavailable spaces
 
 -----
 Bonus
 -----
 
-As a host
-So I can approve a booking
-I want to be able to view the clients profile
+As a user
+So that I can list a space
+I want to be able to sign up as a host
+
+As a user
+So that I can rent a space
+I want to be able to sign up as a client
+
 ```
