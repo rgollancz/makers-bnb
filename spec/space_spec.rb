@@ -1,5 +1,3 @@
-require './app/models/space'
-
 describe Space do
   subject(:space) { described_class.new }
 

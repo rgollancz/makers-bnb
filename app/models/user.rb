@@ -9,15 +9,15 @@ class User
   attr_reader :password
 
   property :id,                 Serial
-  property :signup_date,        Date
+  property :created_at,         DateTime
   property :name,               String
   property :email,              String
   property :phone_number,       String
   property :bio,                Text
   property :encrypted_password, BCryptHash
 
-  # has n, :spaces, :through => Resource
-  # has n, :bookings, :through => Resource
+  has n, :spaces, :through =>   Resource
+  has n, :bookings, :through => Resource
 
   def password=(password)
     @password = password

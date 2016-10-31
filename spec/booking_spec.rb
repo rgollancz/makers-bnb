@@ -1,5 +1,3 @@
-require_relative '../app/models/booking.rb'
-
 describe Booking do
   subject(:booking) { described_class.new }
   describe "properties" do
