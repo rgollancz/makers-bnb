@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New listing</title>
+  </head>
+  <body>
+    <h1>Add a new listing</h1>
+    <form method="post", action="/spaces" >
+      Choose a name for your listing<br>
+      <input type="text" name="name" required="true" placeholder="Name"><br><br>
+      Address<br>
+      <input type="text" name="address" required="true" placeholder="Address"><br><br>
+      Describe your property<br>
+      <input type="text" name="description" required="true" placeholder="Description"><br><br>
+      Set the price per night<br>
+      <input type="decimal" name="price" required="true"  placeholder="Price"><br><br>
+      <input type="submit" value="Save">
+    </form>
+  </body>
+</html>
