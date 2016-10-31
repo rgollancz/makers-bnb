@@ -14,6 +14,7 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/spaces' do
+    @space = Space.create
     #  create new space
     # redirect to new space page
   end
