@@ -5,6 +5,10 @@
 ##User Stories
 
 ```
+-----
+Hosts
+-----
+
 As a host
 So I can rent out a space
 I want to be able to list the space
@@ -28,6 +32,11 @@ I want to be able to assign a price to my list
 As a host
 So clients know when my space is free
 I want to be able to list available dates
+
+
+-------
+Clients
+-------
 
 As a client
 So I can rent a property
