@@ -17,6 +17,7 @@ describe Makersbnb do
     it 'displays the spaces page' do
       get '/spaces'
       expect(last_response).to be_ok
+      expect(last_response.body).to include "Spaces"
     end
     it 'displays the add new space page' do
       get '/spaces/new'

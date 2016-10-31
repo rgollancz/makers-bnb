@@ -1,0 +1,12 @@
+<h1>Spaces</h1>
+
+<ul>
+  <% @spaces.each do |space| %>
+      <li>
+        Name: <%= space.name %>
+        Location: <%= space.address %>
+        Description: <%= space.description %>
+        Price per night: <%= space.price %>
+      </li>
+  <% end %>
+</ul>
