@@ -1,4 +1,3 @@
-require_relative 'datamapper_setup'
 require 'dm-validations'
 require 'bcrypt'
 
