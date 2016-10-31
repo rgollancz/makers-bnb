@@ -17,4 +17,5 @@ group :test do
   gem 'dm-rspec'
   gem 'dm-transactions'
   gem 'database_cleaner'
+  gem 'rack-test'
 end
