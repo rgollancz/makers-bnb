@@ -1,5 +1,6 @@
 #MakersBnB
 
+A web app which allows hosts to list spaces and clients to book specific dates.
 
 
 ##User Stories
