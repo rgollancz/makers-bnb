@@ -9,7 +9,7 @@ describe Makersbnb do
   describe 'get /' do
     it 'displays the home page' do
       get '/'
-      expect(last_response).to be_ok
+      expect(last_response.redirect?).to be true
     end
   end
 
@@ -29,7 +29,6 @@ describe Makersbnb do
     it 'posts a new space' do
       post '/spaces', user_id: 1, name: "One", address: "14 Two Lane", description: "It's a house", price: 130.64
       expect(last_response.redirect?).to be true
-      follow_redirect!
       expect(last_request.path).to eq("/spaces")
     end
   end
