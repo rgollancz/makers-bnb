@@ -9,6 +9,11 @@ class Makersbnb < Sinatra::Base
     'Hello Makersbnb!'
   end
 
+  get '/spaces' do
+    @spaces = Space.all
+    erb :'spaces/spaces'
+  end
+
   get '/spaces/new' do
     erb :new_space
   end
