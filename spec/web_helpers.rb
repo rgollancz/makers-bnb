@@ -12,4 +12,5 @@ def new_space
   fill_in :address, with: 'In the Tree'
   fill_in :description, with: 'A house in the tree'
   fill_in :price, with: 10.00
+  click_on "Save"
 end
