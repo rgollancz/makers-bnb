@@ -1,19 +1,15 @@
-<html>
-<form action="#" class="ws-validate">
-    <h2>Check-in date</h2>
-
-   <div class="form-row show-inputbtns">
-       <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
-   </div>
-
-   <h2>Check-out date</h2>
-
-  <div class="form-row show-inputbtns">
-      <input name ="end_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+<form action="/bookings" method="post">
+  <h2>Check-in date</h2>
+  <div>
+    <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+  </div>
+  <h2>Check-out date</h2>
+  <div>
+    <input name ="end_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
   </div>
   <br/>
-  <div class="form-row">
-      <input type="submit" value="Request to book" />
+  <div>
+    <input type="submit" value="Request to book" />
+    <input type="hidden" name="space_id" value="<%= @space_id %>">
   </div>
 </form>
-</html>

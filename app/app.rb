@@ -27,6 +27,10 @@ class Makersbnb < Sinatra::Base
     redirect '/spaces' # once it exists redirect to specific space page
   end
 
+  get '/spaces/profile' do
+    erb :'spaces/space_profile'
+  end
+
   get '/bookings' do
     erb :bookings
   end
@@ -37,7 +41,7 @@ class Makersbnb < Sinatra::Base
                               status: "unconfirmed",
                               total_cost: 0,
                               user_id: 1,
-                              space_id: 1)
+                              space_id: params[:space_id])
     redirect '/bookings'
   end
 
