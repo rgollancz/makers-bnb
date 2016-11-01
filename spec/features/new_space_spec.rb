@@ -6,11 +6,5 @@ feature 'Add a new space' do
     expect(page).to have_selector(:link_or_button, 'Save')
   end
 
-  before(:each) do
-    @user = User.create(name: params[:name],
-    email: params[:email],
-    username: params[:username],
-    password: params[:password],
-  end
-  
+
 end

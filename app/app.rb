@@ -14,9 +14,11 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/spaces' do
-    @space = Space.create
-    #  create new space
-    # redirect to new space page
+    @space = Space.create(name: params[:name],
+                          address: params[:address],
+                          description: params[:description],
+                          price: params[:price])
+    redirect '/spaces' # once it exists redirect to specific space page
   end
 
   # start the server if ruby file executed directly
