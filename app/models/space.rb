@@ -10,5 +10,7 @@ class Space
   property :price,        Decimal, :scale => 2
 
   has n, :bookings, :through => Resource
-  belongs_to :user
+  # belongs_to :user
+
+  
 end
