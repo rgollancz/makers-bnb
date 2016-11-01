@@ -1,8 +1,9 @@
 describe Space do
   scenario 'prints an individual space' do
     new_space
-    visit '/spaces/2'
-    expect(page).to have_content("Treehouse")
+    visit '/spaces'
+    click_link 'Treehouse'
+    expect(page).to have_content("A house in the tree")
   end
 
 end
