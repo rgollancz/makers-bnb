@@ -3,10 +3,11 @@
 <ul>
   <% @spaces.each do |space| %>
       <li>
-        Name: <a href="http://localhost:9292/spaces/<%=space.id%>" ><%= space.name %></a><br>
+        Name: <%= space.name %></a><br>
         Location: <%= space.address %><br>
         Description: <%= space.description %><br>
         Price per night: <%= space.price %><br><br>
       </li>
   <% end %>
+  <a href="http://localhost:9292/spaces">All Spaces</a>
 </ul>

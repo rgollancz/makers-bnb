@@ -10,8 +10,4 @@ class Space
   property :price,        Integer
 
   has n, :bookings, :through => Resource
-  # belongs_to :user
-
-
-
 end
