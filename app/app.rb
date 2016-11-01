@@ -39,7 +39,6 @@ class Makersbnb < Sinatra::Base
     @booking = Booking.create(start_date: params[:start_date],
                               end_date: params[:end_date],
                               status: "unconfirmed",
-                              total_cost: 0,
                               user_id: 1,
                               space_id: params[:space_id])
     redirect '/bookings'
