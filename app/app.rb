@@ -23,13 +23,13 @@ class Makersbnb < Sinatra::Base
                           address: params[:address],
                           description: params[:description],
                           price: params[:price])
-    redirect '/spaces/:id'
+    redirect '/spaces'
   end
 
   get '/spaces/:id' do
     space = Space.all(id: params[:id])
     @spaces = space
-    erb :'spaces/spaces'
+    erb :'spaces/individual'
   end
 
 

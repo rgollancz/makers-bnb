@@ -4,9 +4,7 @@
   <% @spaces.each do |space| %>
       <li>
         Name: <a href="http://localhost:9292/spaces/<%=space.id%>" ><%= space.name %></a><br>
-        Location: <%= space.address %><br>
-        Description: <%= space.description %><br>
-        Price per night: <%= space.price %><br><br>
+        Price per night: £<%= space.price.to_i %><br><br>
       </li>
   <% end %>
 </ul>
