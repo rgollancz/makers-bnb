@@ -29,7 +29,6 @@ class Makersbnb < Sinatra::Base
 
   get '/spaces/:id' do
     @space = Space.get(params[:id])
-    # @spaces = space
     erb :'spaces/individual'
   end
 
