@@ -1,9 +1,27 @@
 <h1>Spaces</h1>
 
-        Name: <%= @space.name %></a><br>
-        Location: <%= @space.address %><br>
-        Description: <%= @space.description %><br>
-        Price per night: <%= @space.price %><br><br>
-  <form action="/spaces" method="get">
-  <input type="submit" value="All Spaces">
-  </form>
+<p>
+  Name: <%= @space.name %><br>
+  Location: <%= @space.address %><br>
+  Description: <%= @space.description %><br>
+  Price per night: <%= @space.price %><br><br>
+</p>
+
+<form action="/bookings/<%= @space_id %>" method="post">
+  <h2>Check-in date</h2>
+  <div>
+    <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+  </div>
+  <h2>Check-out date</h2>
+  <div>
+    <input name ="end_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+  </div>
+  <br/>
+  <div>
+    <input type="submit" value="Request to book" />
+  </div>
+</form>
+<br><br>
+<form action="/spaces" method="get">
+  <input type="submit" value="View all spaces">
+</form>
