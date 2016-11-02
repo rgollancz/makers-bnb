@@ -3,10 +3,14 @@
 <ul>
   <% @spaces.each do |space| %>
       <li>
-        Name: <a href="http://localhost:9292/spaces/<%=space.id%>" ><%= space.name %></a><br>
-        Price per night: £<%= space.price.to_i %><br><br>
+        Name: <%= space.name %><br>
+        Price per night: £<%= space.price.to_i %><br>
+        <form action="/spaces/<%=space.id%>" method="get" >
+        <input type="submit" value="View Space">
+        </form><br><br>
       </li>
   <% end %>
-  <a href="http://localhost:9292/spaces/new">Add new Space</a>
-
+  <form action="/spaces/new" method="get">
+  <input type="submit" value="Add new Space">
+  </form>
 </ul>

@@ -7,5 +7,7 @@
         Description: <%= @space.description %><br>
         Price per night: <%= @space.price %><br><br>
       </li>
-  <a href="http://localhost:9292/spaces">All Spaces</a>
+  <form action="/spaces" method="get">
+  <input type="submit" value="All Spaces">
+  </form>
 </ul>
