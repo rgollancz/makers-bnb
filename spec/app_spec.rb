@@ -36,7 +36,7 @@ describe Makersbnb do
 
   describe 'post /bookings' do
     it 'redirects to /bookings' do
-      post '/bookings', start_date: "2016-11-02", end_date: "2016-11-03", user_id: 1, space_id: 2
+      post '/bookings/2', start_date: "2016-11-02", end_date: "2016-11-03", user_id: 1, space_id: 2
       expect(last_response.redirect?).to be true
       follow_redirect!
       expect(last_request.path).to eq("/bookings")

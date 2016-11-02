@@ -24,24 +24,26 @@ class Makersbnb < Sinatra::Base
                           description: params[:description],
                           price: params[:price],
                           user_id: 1)
-    redirect '/spaces' # once it exists redirect to specific space page
+    redirect to '/spaces'
   end
 
-  get '/spaces/profile' do
-    erb :'spaces/space_profile'
+  get '/spaces/:id' do
+    @space = Space.get(params[:id])
+    @space_id = params[:id]
+    erb :'spaces/individual'
   end
 
   get '/bookings' do
     erb :bookings
   end
 
-  post '/bookings' do
+  post '/bookings/:space_id' do
     @booking = Booking.create(start_date: params[:start_date],
                               end_date: params[:end_date],
                               status: "unconfirmed",
                               user_id: 1,
                               space_id: params[:space_id])
-    redirect '/bookings'
+    redirect to '/bookings'
   end
 
   # start the server if ruby file executed directly
