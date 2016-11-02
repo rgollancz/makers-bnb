@@ -60,7 +60,8 @@ class Makersbnb < Sinatra::Base
 
   get '/bookings' do
     user = User.get(2)
-    @bookings = user.bookings
+    @bookings_requested = user.bookings
+    @owned_spaces = user.spaces
     erb :bookings
   end
 

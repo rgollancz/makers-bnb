@@ -1,7 +1,7 @@
 <h1>My bookings</h1>
-
+<h2>Requests I've made</h2>
 <ul>
-  <% @bookings.each do |booking| %>
+  <% @bookings_requested.each do |booking| %>
   <li>
     <%= space = Space.get(booking.space_id) %>
     Name: <%= space.name %><br>
@@ -13,4 +13,14 @@
     </form><br><br>
   </li>
   <% end %>
+</ul>
+<h2>Requests I've received</h2>
+<ul>
+<% @owned_spaces.each do |space| %>
+<li>
+  Name: <%=p space.name %><br>
+  Description: <%=p space.description %><br>
+  <%=p space.bookings.each { |x| p x.status} %>
+</li>
+<% end %>
 </ul>
