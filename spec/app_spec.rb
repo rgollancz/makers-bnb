@@ -23,6 +23,12 @@ describe Makersbnb do
       get '/spaces/new'
       expect(last_response).to be_ok
     end
+    it 'displays the individual space page' do
+      Space.create(name: "One", address: "14 Two Lane", description: "It's a house", price: 130, user_id: 1)
+      get '/spaces/1'
+      expect(last_response).to be_ok
+      expect(last_response.body).to include "Check-in date"
+    end
   end
 
   describe 'post /spaces' do
