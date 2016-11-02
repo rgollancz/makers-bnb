@@ -6,7 +6,7 @@ require_relative './models/datamapper_setup'
 class Makersbnb < Sinatra::Base
 
   get '/' do
-    'Hello Makersbnb!'
+    "Hello Makers BnB"
   end
 
   get '/spaces' do
@@ -22,9 +22,16 @@ class Makersbnb < Sinatra::Base
     @space = Space.create(name: params[:name],
                           address: params[:address],
                           description: params[:description],
-                          price: params[:price])
-    redirect '/spaces' # once it exists redirect to specific space page
+                          price: params[:price],
+                          user_id: 1)
+    redirect '/spaces'
   end
+
+  get '/spaces/:id' do
+    @space = Space.get(params[:id])
+    erb :'spaces/individual'
+  end
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
