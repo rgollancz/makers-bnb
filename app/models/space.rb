@@ -9,6 +9,6 @@ class Space
   property :description,  Text
   property :price,        Integer
 
-  has n, :bookings, :through => Resource
+  has n, :bookings
   belongs_to :user
 end

@@ -16,8 +16,8 @@ class User
   property :bio,                Text
   property :encrypted_password, BCryptHash
 
-  has n, :spaces, :through =>   Resource
-  has n, :bookings, :through => Resource
+  has n, :spaces
+  has n, :bookings
 
   def password=(password)
     @password = password
