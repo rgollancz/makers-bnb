@@ -1,0 +1,16 @@
+<h1>My bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+  <li>
+    <%= space = Space.get(booking.space_id) %>
+    Name: <%= space.name %><br>
+    Description: <%= space.description %><br>
+    Dates: <%= booking.start_date %> to <%= booking.end_date %><br>
+    Status: <%= booking.status %> <br>
+    <form action="/spaces/<%=booking.space_id%>" method="get" >
+      <input type="submit" value="View space">
+    </form><br><br>
+  </li>
+  <% end %>
+</ul>

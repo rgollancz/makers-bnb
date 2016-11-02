@@ -59,6 +59,8 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/bookings' do
+    user = User.get(2)
+    @bookings = user.bookings
     erb :bookings
   end
 
@@ -68,7 +70,7 @@ class Makersbnb < Sinatra::Base
                               status: "unconfirmed",
                               user_id: 1,
                               space_id: params[:space_id])
-    redirect to '/bookings'
+    redirect to '/spaces/:space_id'
   end
 
   # start the server if ruby file executed directly

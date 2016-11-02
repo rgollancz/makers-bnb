@@ -4,6 +4,4 @@ feature 'Add a new space' do
     expect(page).to have_content("Add a new listing")
     expect(page).to have_selector(:link_or_button, 'Save')
   end
-
-
 end
