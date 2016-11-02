@@ -15,7 +15,7 @@ class Makersbnb < Sinatra::Base
 
   get '/' do
     if current_user
-      redirect '/bookings'
+      redirect '/spaces'
     else
        redirect 'users/sign_up'
     end
@@ -27,11 +27,11 @@ class Makersbnb < Sinatra::Base
 
   post '/users' do
     user = User.create(name: params[:name],
-                                email: params[:email],
-                                password: params[:password],
-                                phone_number: params[:phone_number])
+                       email: params[:email],
+                       password: params[:password],
+                       phone_number: params[:phone_number])
     session[:user_id] = user.id
-    redirect to '/bookings'
+    redirect to '/spaces'
   end
 
   get '/spaces' do

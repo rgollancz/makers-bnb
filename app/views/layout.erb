@@ -5,6 +5,9 @@
     <title>Makers BnB</title>
   </head>
   <body>
+    <% if current_user %>
+      <p> Logged in as <%= current_user.name %> </p>
+      <% end %>
     <%= yield %>
   </body>
 </html>

@@ -6,7 +6,7 @@ describe Makersbnb do
   def app
     Makersbnb
   end
-  
+
   def post_new_user
     post '/users', name: "John",
                    email: "John@email.com",
@@ -27,7 +27,7 @@ describe Makersbnb do
       get '/'
       expect(last_response.redirect?).to be true
       follow_redirect!
-      expect(last_request.path).to eq("/bookings")
+      expect(last_request.path).to eq("/spaces")
     end
 
   end
@@ -56,11 +56,11 @@ describe Makersbnb do
       expect(last_request.session[:user_id]).to eq user.id
     end
 
-    it 'redirects to /bookings' do
+    it 'redirects to /spaces' do
       post_new_user
       expect(last_response.redirect?).to be true
       follow_redirect!
-      expect(last_request.path).to eq("/bookings")
+      expect(last_request.path).to eq("/spaces")
     end
 
   end
