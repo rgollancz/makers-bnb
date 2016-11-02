@@ -7,7 +7,7 @@ feature 'Sign up as a new user' do
   scenario 'User can sign up' do
     visit '/'
     new_user
-    click_button 'Create account'
+    click_button 'Sign up'
     expect(page).to have_content('Logged in as John')
   end
 end
