@@ -29,7 +29,6 @@ describe Makersbnb do
       follow_redirect!
       expect(last_request.path).to eq("/spaces")
     end
-
   end
 
   describe 'get /users/sign_up' do
@@ -62,7 +61,6 @@ describe Makersbnb do
       follow_redirect!
       expect(last_request.path).to eq("/spaces")
     end
-
   end
 
   describe 'get /spaces' do
@@ -111,5 +109,4 @@ describe Makersbnb do
       expect(last_request.path).to eq("/bookings")
     end
   end
-
 end
