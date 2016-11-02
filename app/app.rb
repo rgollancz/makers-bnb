@@ -5,12 +5,23 @@ require_relative './models/datamapper_setup'
 
 class Makersbnb < Sinatra::Base
 
+  enable :sessions
+
   get '/' do
     "Hello Makers BnB"
   end
 
   get '/users/sign_up' do
     erb :'users/new_user'
+  end
+
+  post '/users' do
+    user = User.create(name: params[:name],
+                                email: params[:email],
+                                password: params[:password],
+                                phone_number: params[:phone_number])
+    session[:user_id] = user.id
+    redirect to '/bookings'
   end
 
   get '/spaces' do

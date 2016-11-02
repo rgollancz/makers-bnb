@@ -11,7 +11,7 @@ class User
   property :id,                 Serial
   property :created_at,         DateTime
   property :name,               String
-  property :email,              String
+  property :email,              String, unique: true
   property :phone_number,       String
   property :bio,                Text
   property :encrypted_password, BCryptHash
