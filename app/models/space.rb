@@ -10,5 +10,5 @@ class Space
   property :price,        Integer
 
   has n, :bookings, :through => Resource
-  # belongs_to :user has to be commneted out for server to run
+  belongs_to :user
 end

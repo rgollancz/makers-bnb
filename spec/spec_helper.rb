@@ -11,8 +11,6 @@ require 'dm-rspec'
 require 'web_helpers'
 require 'database_cleaner'
 
-DatabaseCleaner.strategy = :truncation
-
 Capybara.app = Makersbnb
 
 RSpec.configure do |config|

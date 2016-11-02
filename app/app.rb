@@ -6,7 +6,7 @@ require_relative './models/datamapper_setup'
 class Makersbnb < Sinatra::Base
 
   get '/' do
-    redirect '/spaces'
+    "Hello Makers BnB"
   end
 
   get '/spaces' do
@@ -22,7 +22,8 @@ class Makersbnb < Sinatra::Base
     @space = Space.create(name: params[:name],
                           address: params[:address],
                           description: params[:description],
-                          price: params[:price])
+                          price: params[:price],
+                          user_id: 1)
     redirect '/spaces'
   end
 
