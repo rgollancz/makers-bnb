@@ -6,11 +6,30 @@ describe Makersbnb do
   def app
     Makersbnb
   end
+  
+  def post_new_user
+    post '/users', name: "John",
+                   email: "John@email.com",
+                   password: "password1234",
+                   phone_number: "123456"
+  end
+
   describe 'get /' do
-    it 'displays the home page' do
+    it 'redirects to sign up if no user session' do
       get '/'
-      expect(last_response).to be_ok
+      expect(last_response.redirect?).to be true
+      follow_redirect!
+      expect(last_request.path).to eq("/users/sign_up")
     end
+
+    it 'redirects to bookings if user is signed in' do
+      post_new_user
+      get '/'
+      expect(last_response.redirect?).to be true
+      follow_redirect!
+      expect(last_request.path).to eq("/bookings")
+    end
+
   end
 
   describe 'get /users/sign_up' do
@@ -24,12 +43,6 @@ describe Makersbnb do
   end
 
   describe 'post /users' do
-    def post_new_user
-      post '/users', name: "John",
-                     email: "John@email.com",
-                     password: "password1234",
-                     phone_number: "123456"
-    end
     it 'creates new user' do
       post_new_user
       user = User.first(email: "John@email.com")

@@ -7,8 +7,18 @@ class Makersbnb < Sinatra::Base
 
   enable :sessions
 
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
+  end
+
   get '/' do
-    "Hello Makers BnB"
+    if current_user
+      redirect '/bookings'
+    else
+       redirect 'users/sign_up'
+    end
   end
 
   get '/users/sign_up' do
