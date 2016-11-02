@@ -13,6 +13,16 @@ describe Makersbnb do
     end
   end
 
+  describe 'get /users/sign_up' do
+    it 'displays sign up form' do
+      get '/users/sign_up'
+      expect(last_response).to be_ok
+      expect(last_response.body).to include "Name"
+      expect(last_response.body).to include "Password"
+      expect(last_response.body).to include "Email"
+    end
+  end
+
   describe 'get /spaces' do
     it 'displays the spaces page' do
       get '/spaces'
