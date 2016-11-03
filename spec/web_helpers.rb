@@ -1,5 +1,5 @@
-def new_user
-  visit '/'
+def new_user_1
+  visit '/users/sign_up'
   fill_in :name, with: 'John'
   fill_in :email, with: 'john@email.com'
   fill_in :password, with: '123456'

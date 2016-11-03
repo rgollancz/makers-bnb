@@ -1,9 +1,9 @@
 
-describe Space do
-  scenario 'prints an individual space' do
+feature 'Individual space view' do
+  scenario 'show details of an individual space' do
+    new_user_1
     new_space
-    visit '/spaces'
     click_button("View space")
-    expect(page).to have_content("A house")
+    expect(page).to have_content("A house in the tree")
   end
 end

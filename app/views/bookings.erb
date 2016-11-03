@@ -18,9 +18,9 @@
 <ul>
 <% @owned_spaces.each do |space| %>
 <li>
-  Name: <%=p space.name %><br>
-  Description: <%=p space.description %><br>
-  <%=p space.bookings.each { |x| p x.status} %>
+  Name: <%= space.name %><br>
+  Description: <%= space.description %><br>
+  <%= space.bookings.each { |x| x.status} %>
 </li>
 <% end %>
 </ul>
