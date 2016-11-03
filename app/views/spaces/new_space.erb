@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html>
+
   <head>
     <meta charset="utf-8">
     <title>New listing</title>
   </head>
   <body>
     <h1>Add a new listing</h1>
+    <% if @failed %>
+    Saving new space failed - please try again
+    <% end %>
     <form method="post", action="/spaces">
       Choose a name for your listing<br>
       <input type="text" name="name" required="true" placeholder="Name"><br><br>
@@ -18,4 +20,3 @@
       <input type="submit" value="Save">
     </form>
   </body>
-</html>
