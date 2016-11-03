@@ -17,7 +17,7 @@ class Makersbnb < Sinatra::Base
     if current_user
       redirect '/spaces'
     else
-       redirect 'users/sign_up'
+       erb :index
     end
   end
 
@@ -72,6 +72,11 @@ class Makersbnb < Sinatra::Base
                               user_id: current_user.id,
                               space_id: params[:space_id])
     redirect to '/bookings'
+  end
+
+  post '/sessions/logout' do
+    session[:user_id] = nil
+    redirect to '/'
   end
 
   # start the server if ruby file executed directly

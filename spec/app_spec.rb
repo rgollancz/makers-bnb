@@ -117,4 +117,20 @@ describe Makersbnb do
       expect(last_request.path).to eq("/bookings")
     end
   end
+
+  describe 'post sessions/logout' do
+    it "logs out current user" do
+      post_new_user
+      post "/sessions/logout"
+      expect(last_request.session[:user_id]).to eq(nil)
+    end
+    it "redirects to home page" do
+      post "/sessions/logout"
+      expect(last_response.redirect?).to be true
+      follow_redirect!
+      expect(last_request.path).to eq("/")
+    end
+  end
+
+
 end
