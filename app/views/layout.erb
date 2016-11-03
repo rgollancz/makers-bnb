@@ -7,6 +7,9 @@
   <body>
     <% if current_user %>
       <p> Logged in as <%= current_user.name %> </p>
+      <form action="/sessions/logout" method="POST" >
+        <input type="submit" value="Logout" />
+    </form>
       <% end %>
     <%= yield %>
   </body>
