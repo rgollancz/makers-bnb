@@ -106,6 +106,12 @@ describe Makersbnb do
       follow_redirect!
       expect(last_request.path).to eq("/spaces")
     end
+
+    it 'displays an error message when saving fails' do
+      new_user_1
+      new_space_error
+      expect(page).to have_content("Saving new space failed - please try again")
+    end
   end
 
   describe 'post /bookings' do

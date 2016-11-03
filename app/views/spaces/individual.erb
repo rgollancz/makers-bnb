@@ -6,15 +6,15 @@
   Description: <%= @space.description %><br>
   Price per night: <%= @space.price %><br><br>
 </p>
-
+<% if current_user %>
 <form action="/bookings/<%= @space_id %>" method="post">
   <h2>Check-in date</h2>
   <div>
-    <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+    <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" required="true" />
   </div>
   <h2>Check-out date</h2>
   <div>
-    <input name ="end_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+    <input name ="end_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" required="true" />
   </div>
   <br/>
   <div>
@@ -25,3 +25,9 @@
 <form action="/spaces" method="get">
   <input type="submit" value="View all spaces">
 </form>
+<% else %>
+  Sign up to book<br><br>
+  <form action="/users/sign_up" method="get">
+    <input type="submit" value="Sign up">
+  </form>
+<% end %>

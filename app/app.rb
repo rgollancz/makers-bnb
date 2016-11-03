@@ -48,6 +48,7 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/spaces/new' do
+    @failed = params[:failed]
     erb :'spaces/new_space'
   end
 
@@ -57,7 +58,11 @@ class Makersbnb < Sinatra::Base
                           description: params[:description],
                           price: params[:price],
                           user_id: current_user.id)
-    redirect to '/spaces'
+    if @space.id.nil?
+      redirect to '/spaces/new?failed=true'
+    else
+      redirect to '/spaces'
+    end
   end
 
   get '/bookings' do
@@ -69,6 +74,7 @@ class Makersbnb < Sinatra::Base
   get '/spaces/:id' do
     @space = Space.get(params[:id])
     @space_id = params[:id]
+    @failed = params[:failed]
     erb :'spaces/individual'
   end
 
