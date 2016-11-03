@@ -67,7 +67,10 @@ class Makersbnb < Sinatra::Base
 
   get '/bookings' do
     @bookings_requested = current_user.bookings
-    @owned_spaces = current_user.spaces
+    @bookings_received = []
+    bookings = current_user.spaces.each do |space|
+      space.bookings { |booking| @bookings_received.push(booking) }
+    end
     erb :bookings
   end
 
