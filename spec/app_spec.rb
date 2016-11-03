@@ -54,6 +54,15 @@ describe Makersbnb do
       expect(last_request.session[:user_id]).to eq user.id
     end
 
+    it 'displays an error message when signup fails' do
+      browser = Capybara.current_session.driver.browser
+      new_user_1
+      browser.clear_cookies
+      visit '/'
+      new_user_1
+      expect(page).to have_content("Signup failed - please try again")
+    end
+
     it 'redirects to /spaces' do
       post_new_user
       expect(last_response.redirect?).to be true
