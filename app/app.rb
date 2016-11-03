@@ -22,6 +22,7 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/users/sign_up' do
+    @failed = params[:failed]
     erb :'users/new_user'
   end
 
@@ -30,8 +31,12 @@ class Makersbnb < Sinatra::Base
                        email: params[:email],
                        password: params[:password],
                        phone_number: params[:phone_number])
-    session[:user_id] = user.id
-    redirect to '/spaces'
+    if user.id.nil?
+      redirect to '/users/sign_up?failed=true'
+    else
+      session[:user_id] = user.id
+      redirect to '/spaces'
+    end
   end
 
   get '/spaces' do

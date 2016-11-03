@@ -1,4 +1,9 @@
 <h1>Sign up</h1>
+
+<% if @failed %>
+<p> Signup failed - please try again </p>
+<% end %>
+
 <form method="post", action="/users">
   <input type="text" name="name" required="true" placeholder="Name"><br><br>
   <input type="email" name="email" required="true" placeholder="Email"><br><br>
