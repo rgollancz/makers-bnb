@@ -6,9 +6,12 @@
   <input type="submit" value="Sign up"/>
 </form>
 
-<h2> Login to Makers BnB </h2>
+<h2> Log in to Makers BnB </h2>
+<% if @invalid_login %>
+  <h3 style="color: red">Invalid email or password</h3><br/>
+<% end %>
 <form action="/sessions" method="POST">
-  <input type="email" name="email" required="true" placeholder="Email"><br><br>
-  <input type="password" name="password" required="true" placeholder="Password"><br><br>
+  <input type="email" name="email" required="true" placeholder="Email"><br/><br/>
+  <input type="password" name="password" required="true" placeholder="Password"><br/><br/>
   <input type="submit" value="Login">
 </form>

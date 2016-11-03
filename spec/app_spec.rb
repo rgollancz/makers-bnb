@@ -16,6 +16,11 @@ describe Makersbnb do
   end
 
   describe 'get /' do
+    it 'displays the home page with log in form' do
+      get '/'
+      expect(last_response).to be_ok
+      expect(last_response.body).to include "Log in to Makers BnB"
+    end
     it 'redirects to bookings if user is signed in' do
       post_new_user
       get '/'
@@ -43,7 +48,7 @@ describe Makersbnb do
       expect(user.phone_number).to eq "123456"
     end
 
-    it 'sets a the user id in the session' do
+    it 'sets the user id in the session' do
       post_new_user
       user = User.first(email: "John@email.com")
       expect(last_request.session[:user_id]).to eq user.id
@@ -108,6 +113,24 @@ describe Makersbnb do
       expect(last_response.redirect?).to be true
       follow_redirect!
       expect(last_request.path).to eq("/bookings")
+    end
+  end
+
+  describe 'post /sessions' do
+    it 'sets the user id in the session for a valid login' do
+      post_new_user
+      post "/sessions/logout"
+      post '/sessions', email: "John@email.com", password: "password1234"
+      expect(last_request.session[:user_id]).to eq 1
+    end
+    it 'redirects back to login page for invalid password' do
+      post_new_user
+      post "/sessions/logout"
+      post '/sessions', email: "John@email.com", password: "wrongpassword"
+      expect(last_request.session[:user_id]).to eq nil
+      expect(last_response.redirect?).to be true
+      follow_redirect!
+      expect(last_request.path).to eq("/")
     end
   end
 

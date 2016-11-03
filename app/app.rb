@@ -2,9 +2,10 @@ ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
 require_relative './models/datamapper_setup'
+require 'bcrypt'
 
 class Makersbnb < Sinatra::Base
-
+  include BCrypt
   enable :sessions
 
   helpers do
@@ -17,6 +18,7 @@ class Makersbnb < Sinatra::Base
     if current_user
       redirect '/spaces'
     else
+       @invalid_login = params[:invalid_login]
        @logout = params[:logout]
        erb :index
     end
@@ -73,6 +75,17 @@ class Makersbnb < Sinatra::Base
                               user_id: current_user.id,
                               space_id: params[:space_id])
     redirect to '/bookings'
+  end
+
+  post '/sessions' do
+    user = User.first(email: params[:email])
+    if Password.new(user.encrypted_password) == params[:password]
+      session[:user_id] = user.id
+      redirect to '/spaces'
+    else
+      redirect to '/?invalid_login=true'
+    end
+
   end
 
   post '/sessions/logout' do
