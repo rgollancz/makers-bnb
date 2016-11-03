@@ -1,13 +1,138 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Makers BnB</title>
-  </head>
-  <body>
-    <% if current_user %>
-      <p> Logged in as <%= current_user.name %> </p>
-      <% end %>
+<head>
+  <meta charset="utf-8">
+  <title>Makers BnB</title>
+</head>
+<body>
+  <header class="solid-banner">
+    <div class="solid-banner__caption">
+      <div class="logo_placement">
+      <a href="/"><img src="http://www.iconsplace.com/icons/preview/white/bed-256.png" style="width:60px;height:40px;"/></a>
+      </div>
+      <div class="user_name">
+        <% if current_user %>
+        <p> Logged in as <%= current_user.name %> </p>
+        <% else %>
+        <p> Howdy! </p>
+        <% end %>
+      </div>
+    </div>
+  </header>
+  <section class="content_container">
     <%= yield %>
-  </body>
+  </section>
+</body>
+
 </html>
+
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic);
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  box-sizing: border-box;
+  font-family: helvetica;
+  font-size: 75%;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  + h1,
+  + h2,
+  + h3,
+  + p {
+    margin-top: 1rem;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+
+.content_container {
+    position: relative;
+    padding-top: 110px;
+    display: flex;
+    position: inherit;
+}
+
+.user_name {
+  padding-top: 12px;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+}
+
+.logo_placement {
+
+}
+
+.solid-banner {
+  left: 0;
+  top: 0;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #008000;
+  opacity: 0.4;
+}
+
+.solid-banner__caption {
+  position: relative;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+  padding: 20px;
+  padding-top: 10px;
+  padding-left: 50px;
+  min-height: inherit;
+  color: white;
+}
+
+h1 {
+  color: black;
+  font-size: 50px;
+  padding-bottom: 10px;
+}
+
+input[type="submit"] {
+  appearance: none;
+  border: none;
+  opacity: .99;
+  width:180px;
+  background: #1a75ff;
+
+  border-radius: 4px;
+  color: #eee;
+  cursor: pointer;
+}
+
+input {
+  display: block;
+  font-size: 14px;
+  width:300px;
+  margin: 2px auto;
+  padding: 10px 8px 10px 8px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  opacity: 0.4;
+}
+
+
+ </style>

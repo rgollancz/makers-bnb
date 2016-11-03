@@ -1,16 +1,59 @@
-<h1>Spaces</h1>
+<div class="spaces_container">
+  <h1>Spaces</h1>
 
-<ul>
-  <% @spaces.each do |space| %>
-  <li>
-    Name: <%= space.name %><br>
-    Price per night: £<%= space.price.to_i %><br>
-    <form action="/spaces/<%=space.id%>" method="get" >
-      <input type="submit" value="View space">
-    </form><br><br>
-  </li>
-  <% end %>
-  <form action="/spaces/new" method="get">
-    <input type="submit" value="Add new space">
-  </form>
-</ul>
+  <ul style="list-style: none;">
+    <li>
+      <div class="space_summary">
+      <% @spaces.each do |space| %>
+      <div class="individual_space_summary">
+        <%= space.name %><br>
+        £<%= space.price.to_i %> per night<br><br>
+        <form action="/spaces/<%=space.id%>" method="get" >
+          <input type="submit" value="View space">
+        </form>
+      </div><br><br>
+      <% end %>
+    </div>
+    <li>
+      </ul>
+</div>
+    <div class="new_space_button">
+      <form action="/spaces/new" method="get">
+        <input type="submit" value="Add new space">
+      </form>
+    </div>
+
+<style>
+
+.individual_space_summary {
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+}
+/*ul {
+  padding-left: 20px;
+}*/
+.spaces_container {
+  display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+  position: inherit;
+  justify-content: left;
+
+}
+.new_space_button {
+  position: absolute;
+  padding-top: 18px;
+  right: 10px;
+}
+
+
+</style>
