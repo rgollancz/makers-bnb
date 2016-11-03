@@ -17,6 +17,7 @@ class Makersbnb < Sinatra::Base
     if current_user
       redirect '/spaces'
     else
+       @logout = params[:logout]
        erb :index
     end
   end
@@ -76,7 +77,7 @@ class Makersbnb < Sinatra::Base
 
   post '/sessions/logout' do
     session[:user_id] = nil
-    redirect to '/'
+    redirect to '/?logout=true'
   end
 
   # start the server if ruby file executed directly

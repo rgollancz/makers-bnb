@@ -16,13 +16,6 @@ describe Makersbnb do
   end
 
   describe 'get /' do
-    it 'redirects to sign up if no user session' do
-      get '/'
-      expect(last_response.redirect?).to be true
-      follow_redirect!
-      expect(last_request.path).to eq("/users/sign_up")
-    end
-
     it 'redirects to bookings if user is signed in' do
       post_new_user
       get '/'
