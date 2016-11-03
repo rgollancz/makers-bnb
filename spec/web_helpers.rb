@@ -30,3 +30,8 @@ def book_space
   fill_in :end_date, with: '14122016'
   click_button "Request to book"
 end
+
+def book_space_error
+  fill_in :start_date, with: '12122016'
+  click_button "Request to book"
+end

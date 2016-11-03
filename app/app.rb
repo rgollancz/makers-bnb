@@ -71,6 +71,7 @@ class Makersbnb < Sinatra::Base
   get '/spaces/:id' do
     @space = Space.get(params[:id])
     @space_id = params[:id]
+    @failed = params[:failed]
     erb :'spaces/individual'
   end
 

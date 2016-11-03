@@ -10,11 +10,11 @@
 <form action="/bookings/<%= @space_id %>" method="post">
   <h2>Check-in date</h2>
   <div>
-    <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+    <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" required="true" />
   </div>
   <h2>Check-out date</h2>
   <div>
-    <input name ="end_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" />
+    <input name ="end_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" required="true" />
   </div>
   <br/>
   <div>
