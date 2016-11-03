@@ -11,7 +11,8 @@ describe Makersbnb do
     post '/users', name: "John",
                    email: "John@email.com",
                    password: "password1234",
-                   phone_number: "123456"
+                   phone_number: "123456",
+                   id: 1
   end
 
   describe 'get /' do
@@ -74,10 +75,12 @@ describe Makersbnb do
       expect(last_response).to be_ok
     end
     it 'displays the individual space page' do
+      post_new_user
       Space.create(name: "One",
                    address: "14 Two Lane",
                    description: "It's a house",
                    price: 130,
+                   id: 1,
                    user_id: 1)
       get '/spaces/1'
       expect(last_response).to be_ok
@@ -87,8 +90,8 @@ describe Makersbnb do
 
   describe 'post /spaces' do
     it 'posts a new space' do
-      post '/spaces', user_id: 1,
-                      name: "One",
+      post_new_user
+      post '/spaces', name: "One",
                       address: "14 Two Lane",
                       description: "It's a house",
                       price: 130
@@ -100,10 +103,15 @@ describe Makersbnb do
 
   describe 'post /bookings' do
     it 'redirects to /bookings' do
-      post '/bookings/2', start_date: "2016-11-02",
-                          end_date: "2016-11-03",
-                          user_id: 1,
-                          space_id: 2
+      post_new_user
+      Space.create(name: "One",
+                   address: "14 Two Lane",
+                   description: "It's a house",
+                   price: 130,
+                   id: 1,
+                   user_id: 1)
+      post '/bookings/1', start_date: "2016-11-02",
+                          end_date: "2016-11-03"
       expect(last_response.redirect?).to be true
       follow_redirect!
       expect(last_request.path).to eq("/bookings")
