@@ -7,7 +7,7 @@
   Price per night: <%= @space.price %><br><br>
 </p>
 <% if current_user %>
-<form action="/bookings/<%= @space_id %>" method="post">
+<form action="/bookings/<%= @space_id %>" method="POST">
   <h2>Check-in date</h2>
   <div>
     <input name ="start_date" type="date" data-date-inline-picker="false" data-date-open-on-focus="true" required="true" />

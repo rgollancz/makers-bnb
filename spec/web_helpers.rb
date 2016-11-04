@@ -38,11 +38,10 @@ def new_space_error
   click_on "Save"
 end
 
-
 def book_space
   visit '/spaces/1'
-  fill_in :start_date, with: '12122016'
-  fill_in :end_date, with: '14122016'
+  fill_in :start_date, with: '2016-11-02'
+  fill_in :end_date, with: '2016-11-04'
   click_button "Request to book"
 end
 

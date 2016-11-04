@@ -3,6 +3,7 @@ ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
 require_relative './models/datamapper_setup'
 require 'bcrypt'
+require_relative './models/availability_checker'
 
 class Makersbnb < Sinatra::Base
   include BCrypt
@@ -90,7 +91,14 @@ class Makersbnb < Sinatra::Base
                               status: "unconfirmed",
                               user_id: current_user.id,
                               space_id: params[:space_id])
-    redirect to '/bookings'
+    space = Space.get(params[:space_id])
+    confirmed_bookings = space.bookings.select { |booking| booking.status == "confirmed" }
+    check_booking = AvailabilityChecker.new(confirmed_bookings, @booking)
+    if check_booking.available?
+      redirect to '/bookings'
+    else
+      redirect to '/spaces/params[:space_id]'
+    end
   end
 
   post '/sessions' do
