@@ -54,15 +54,11 @@ So that I can't be disappointed
 I don't want to be able to book unavailable spaces
 
 -----
-Bonus
+User
 -----
 
 As a user
 So that I can list a space
-I want to be able to sign up as a host
-
-As a user
-So that I can rent a space
-I want to be able to sign up as a client
+I want to be able to sign up
 
 ```
