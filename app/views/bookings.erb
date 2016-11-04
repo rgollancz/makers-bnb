@@ -25,10 +25,11 @@ Booking failed - please try again
 <li>
   Name: <%= booking.space.name %><br>
   Description: <%= booking.space.description %><br>
-  <%= booking.status %>
-  <form action="/spaces/<%=booking.space_id%>" method="get" >
-    <input type="submit" value="View space">
-  </form><br><br>
+  <%= booking.status %> for <%= booking.user.name %>
 </li>
 <% end %>
+<form action="/bookings" method="get" >
+  <input type="submit" value="Confirm" onclick="">
+  <input type="submit" value="Reject" onclick="">
+</form><br><br>
 </ul>
