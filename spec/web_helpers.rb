@@ -16,9 +16,26 @@ def new_user_2
   click_button 'Sign up'
 end
 
+def login_user_1
+  visit '/'
+  fill_in :email, with: 'john@email.com'
+  fill_in :password, with: '123456'
+  click_button 'Login'
+end
+
+
 def logout
   visit '/'
   click_button 'Logout'
+end
+
+def host_client_booking_setup
+  new_user_1
+  new_space_user_id_1
+  logout
+  new_user_2
+  new_booking_user_id_2
+  logout
 end
 
 def new_space
@@ -28,6 +45,14 @@ def new_space
   fill_in :description, with: 'A house in the tree'
   fill_in :price, with: 10.00
   click_on "Save"
+end
+
+def new_space_user_id_1
+  Space.create(name: "Two", address: "14 Two Lane", description: "It's a house", price: 130, user_id: 1)
+end
+
+def new_booking_user_id_2
+  Booking.create(start_date: "2016-11-02", end_date: "2016-11-04", status: "unconfirmed", user_id: 2, space_id: 1)
 end
 
 def new_space_error

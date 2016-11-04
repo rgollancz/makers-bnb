@@ -1,14 +1,23 @@
 feature 'View requests' do
   scenario 'A host can view requests they\'ve received' do
     new_user_1
-    Space.create(name: "Two", address: "14 Two Lane", description: "It's a house", price: 130, user_id: 1)
+    new_space_user_id_1
     logout
     new_user_2
-    p "User 2 logged in"
-    Booking.create(start_date: "2016-11-02", end_date: "2016-11-04", status: "unconfirmed", user_id: 2, space_id: 1)
-    p "Booking created"
+    new_booking_user_id_2
     visit '/bookings'
     expect(page).to have_content("My bookings")
     expect(page).to have_content("Two")
+  end
+
+  scenario 'A host can see who the request is made by' do
+    host_client_booking_setup
+    login_user_1
+    visit '/bookings'
+    expect(page).to have_content("approval for Mary")
+  end
+
+  scenario 'host can confirm or reject booking request' do
+    
   end
 end
