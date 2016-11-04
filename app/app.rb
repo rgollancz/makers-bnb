@@ -97,7 +97,7 @@ class Makersbnb < Sinatra::Base
     if check_booking.available?
       redirect to '/bookings'
     else
-      redirect to '/spaces/params[:space_id]'
+      redirect to "/spaces/#{params[:space_id]}"
     end
   end
 
