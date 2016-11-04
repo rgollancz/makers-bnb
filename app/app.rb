@@ -86,17 +86,20 @@ class Makersbnb < Sinatra::Base
   post '/bookings/:space_id' do
     @booking = Booking.create(start_date: params[:start_date],
                               end_date: params[:end_date],
-                              status: "Pending",
+                              status: "pending",
                               user_id: current_user.id,
                               space_id: params[:space_id])
     redirect to '/bookings'
   end
 
-  get '/booking/:id' do
+  post '/booking/confirmation/:id' do
     @booking = Booking.get(params[:id])
-    @booking_id = params[:id]
-    @booking.status = "Rejected"
-    @booking.save
+    if params[:confirm] == "Approve"
+      @booking.update(:status => "approved")
+    else
+      @booking.update(:status => "rejected")
+    end
+
     redirect '/bookings'
   end
 

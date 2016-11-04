@@ -26,12 +26,14 @@ Booking failed - please try again
   Name: <%= booking.space.name %><br>
   Description: <%= booking.space.description %><br>
   <%= booking.status %> for <%= booking.user.name %>
-  <form action="/booking/<%=booking.id%> " method="get" >
-    <input type="submit" value="Confirm">
+  <% if booking.status == "pending" %>
+  <form action="/booking/confirmation/<%=booking.id%> " method="post" >
+    <input  name="confirm" type="submit" value="Approve" >
   </form>
-  <form action="/booking/<%=booking.id%>" method="get" >
-    <input type="submit" value="Reject">
+  <form action="/booking/confirmation/<%=booking.id%>" method="post" >
+    <input name="confirm" type="submit" value="Reject" >
   </form><br><br>
+  <% end %>
 </li>
 <% end %>
 </ul>
