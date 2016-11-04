@@ -69,7 +69,7 @@ class Makersbnb < Sinatra::Base
   get '/spaces/:id' do
     @space = Space.get(params[:id])
     @space_id = params[:id]
-    @failed = params[:failed]
+    @booking_failed = params[:booking_failed]
     erb :'spaces/individual'
   end
 
@@ -96,7 +96,7 @@ class Makersbnb < Sinatra::Base
     if check_booking.available?
       redirect to '/bookings'
     else
-      redirect to "/spaces/#{params[:space_id]}"
+      redirect to "/spaces/#{params[:space_id]}?booking_failed=true"
     end
   end
 

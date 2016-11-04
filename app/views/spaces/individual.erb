@@ -1,5 +1,9 @@
 <h1>Spaces</h1>
 
+<% if @booking_failed %>
+Dates unavailable - please select a different date range
+<% end %>
+
 <p>
   Name: <%= @space.name %><br>
   Location: <%= @space.address %><br>
