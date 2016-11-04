@@ -114,6 +114,24 @@ describe Makersbnb do
     end
   end
 
+  describe 'get /bookings' do
+    it 'displays the bookings page if user is logged in' do
+      post_new_user
+      get '/bookings'
+      expect(last_response).to be_ok
+    end
+  end
+
+  # describe 'post /bookings' do
+  #   it 'redirects to /bookings when booking is available' do
+  #     post_new_user
+  #     get '/bookings'
+  #     expect(last_response.redirect?).to be true
+  #     follow_redirect!
+  #     expect(last_request.path).to eq("/bookings")
+  #   end
+  # end
+
   describe 'post /sessions' do
     it 'sets the user id in the session for a valid login' do
       post_new_user

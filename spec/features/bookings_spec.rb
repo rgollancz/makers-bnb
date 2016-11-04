@@ -16,5 +16,4 @@ feature 'View requests' do
     visit '/bookings'
     expect(page).to have_content('for Mary')
   end
-
 end
