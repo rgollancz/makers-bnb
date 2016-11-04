@@ -92,6 +92,14 @@ class Makersbnb < Sinatra::Base
     redirect to '/bookings'
   end
 
+  get '/booking/:id' do
+    @booking = Booking.get(params[:id])
+    @booking_id = params[:id]
+    @booking.status = "Rejected"
+    @booking.save
+    redirect '/bookings'
+  end
+
   post '/sessions' do
     user = User.first(email: params[:email])
     if Password.new(user.encrypted_password) == params[:password]
