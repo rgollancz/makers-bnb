@@ -1,5 +1,5 @@
 feature 'View requests' do
-  scenario 'A host can view requests they\'ve received', focus: true do
+  scenario 'A host can view requests they\'ve received' do
     new_user_1
     Space.create(name: "Two", address: "14 Two Lane", description: "It's a house", price: 130, user_id: 1)
     logout

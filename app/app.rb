@@ -88,12 +88,12 @@ class Makersbnb < Sinatra::Base
   post '/bookings/:space_id' do
     @booking = Booking.create(start_date: params[:start_date],
                               end_date: params[:end_date],
-                              status: "unconfirmed",
+                              status: "pending",
                               user_id: current_user.id,
                               space_id: params[:space_id])
     space = Space.get(params[:space_id])
-    confirmed_bookings = space.bookings.select { |booking| booking.status == "confirmed" }
-    check_booking = AvailabilityChecker.new(confirmed_bookings, @booking)
+    approved_bookings = space.bookings.select { |booking| booking.status == "approved" }
+    check_booking = AvailabilityChecker.new(approved_bookings, @booking)
     if check_booking.available?
       redirect to '/bookings'
     else
