@@ -15,14 +15,13 @@ feature 'View requests' do
     login_user_1
     visit '/bookings'
     expect(page).to have_content('for Mary')
-    expect(page).to have_selector(:link_or_button, 'Confirm' && 'Reject')
   end
 
-  scenario 'host can confirm or reject booking request' do
-    host_client_booking_setup
-    login_user_1
-    visit '/bookings'
-    click_button 'Confirm'
-    expect(page).to have_content('Approved')
-  end
+  # scenario 'host can confirm or reject booking request' do
+  #   host_client_booking_setup
+  #   login_user_1
+  #   visit '/bookings'
+  #   click_button 'Confirm'
+  #   expect(page).to have_content('Approved')
+  # end
 end
