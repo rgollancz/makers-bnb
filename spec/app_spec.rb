@@ -114,23 +114,6 @@ describe Makersbnb do
     end
   end
 
-  describe 'post /bookings' do
-    it 'redirects to /bookings' do
-      post_new_user
-      Space.create(name: "One",
-                   address: "14 Two Lane",
-                   description: "It's a house",
-                   price: 130,
-                   id: 1,
-                   user_id: 1)
-      post '/bookings/1', start_date: "2016-11-02",
-                          end_date: "2016-11-03"
-      expect(last_response.redirect?).to be true
-      follow_redirect!
-      expect(last_request.path).to eq("/bookings")
-    end
-  end
-
   describe 'post /sessions' do
     it 'sets the user id in the session for a valid login' do
       post_new_user

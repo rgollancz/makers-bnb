@@ -21,11 +21,10 @@ Booking failed - please try again
 </ul>
 <h2>Requests I've received</h2>
 <ul>
-<% @bookings_received.each do |booking| %>
+<% @bookings.each do |booking| %>
 <li>
-  <%= space = Space.get(booking.space_id) %>
-  Name: <%=space.name %><br>
-  Description: <%=space.description %><br>
+  Name: <%= booking.space.name %><br>
+  Description: <%= booking.space.description %><br>
   <%= booking.status %>
   <form action="/spaces/<%=booking.space_id%>" method="get" >
     <input type="submit" value="View space">

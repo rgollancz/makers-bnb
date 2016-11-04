@@ -66,12 +66,14 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/bookings' do
-    @bookings_requested = current_user.bookings
-    @bookings_received = []
-    bookings = current_user.spaces.each do |space|
-      space.bookings { |booking| @bookings_received.push(booking) }
+    if current_user
+      @bookings_requested = current_user.bookings
+      spaces = Space.all(user_id: current_user.id)
+      @bookings = spaces.all.bookings
+      erb :bookings
+    else
+      redirect to '/'
     end
-    erb :bookings
   end
 
   get '/spaces/:id' do
