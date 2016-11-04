@@ -4,9 +4,7 @@ feature 'View requests' do
     Space.create(name: "Two", address: "14 Two Lane", description: "It's a house", price: 130, user_id: 1)
     logout
     new_user_2
-    p "User 2 logged in"
     Booking.create(start_date: "2016-11-02", end_date: "2016-11-04", status: "unconfirmed", user_id: 2, space_id: 1)
-    p "Booking created"
     visit '/bookings'
     expect(page).to have_content("My bookings")
     expect(page).to have_content("Two")
