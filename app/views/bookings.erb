@@ -1,35 +1,110 @@
-<h1>My bookings</h1>
-<h2>Requests I've made</h2>
+</ul>
+<head>
+  <meta charset="utf-8">
+  <title>My bookings</title>
+</head>
 
-<ul>
-  <% @bookings_requested.each do |booking| %>
-  <li>
-    <%= space = Space.get(booking.space_id) %>
-    Name: <%= space.name %><br>
-    Description: <%= space.description %><br>
-    Dates: <%= booking.start_date %> to <%= booking.end_date %><br>
-    Status: <%= booking.status %> <br>
-    <form action="/spaces/<%=booking.space_id%>" method="get" >
-      <input type="submit" value="View space">
-    </form><br><br>
-  </li>
-  <% end %>
-</ul>
-<h2>Requests I've received</h2>
-<ul>
-<% @bookings.each do |booking| %>
-<li>
-  Name: <%= booking.space.name %><br>
-  Description: <%= booking.space.description %><br>
-  <%= booking.status %> for <%= booking.user.name %>
-  <% if booking.status == "pending" %>
-  <form action="/booking/confirmation/<%=booking.id%> " method="post" >
-    <input  name="confirm" type="submit" value="Approve" >
-  </form>
-  <form action="/booking/confirmation/<%=booking.id%>" method="post" >
-    <input name="confirm" type="submit" value="Reject" >
-  </form><br><br>
-  <% end %>
-</li>
-<% end %>
-</ul>
+<body>
+  <div class="bookings_container">
+    <h1>My bookings</h1>
+    <div class="made_received_block">
+      <div class="made_block">
+        <h2>Requests I've made</h2>
+        <% if @failed %>
+        Booking failed - please try again
+        <% end %>
+        <ul style="list-style: none;">
+          <% @bookings_requested.each do |booking| %>
+          <li >
+            <div class="requests_made">
+              <!-- <%= space = Space.get(booking.space_id) %> this is making a # appear -->
+              Name: <%= space.name %><br>
+              Description: <%= space.description %><br>
+              Dates: <%= booking.start_date %> to <%= booking.end_date %><br>
+              Status: <%= booking.status %> <br>
+              <form action="/spaces/<%=booking.space_id%>" method="get" >
+                <input type="submit" value="View space">
+              </form>
+            </div>
+          </li><br><br>
+          <% end %>
+        </ul>
+      </div>
+      <div class="received_block">
+        <h2>Requests I've received</h2>
+        <ul style="list-style: none">
+          <% @bookings.each do |booking| %>
+          <li >
+            <div class="requests_received">
+              Name: <%= booking.space.name %><br>
+              Description: <%= booking.space.description %><br>
+              <%= booking.status %> for <%= booking.user.name %><br><br>
+              <% if booking.status == "pending" %>
+              <form action="/booking/confirmation/<%=booking.id%> " method="post" >
+                <input  name="confirm" type="submit" value="Approve">
+              </form>
+              <form action="/booking/confirmation/<%=booking.id%>" method="post" >
+                <input name="confirm" type="submit" value="Reject">
+              </form>
+            </div>
+            <% end %>
+          </li><br><br>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+
+<style>
+h1 {
+  justify-content: left;
+}
+h2 {
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+ul {
+  padding-left: 0;
+}
+.made_received_block {
+  display: flex;
+  flex-direction: row;
+}
+.requests_made {
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+.requests_received {
+  color: black;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+.received_block {
+  padding-left: 40px;
+}
+.bookings_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  position: inherit;
+  justify-content: left;
+  padding-left: 40px;
+}
+</style>

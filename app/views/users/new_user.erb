@@ -1,13 +1,73 @@
-<h1>Sign up</h1>
+<head>
+  <meta charset="utf-8">
+  <title>New user</title>
+</head>
 
-<% if @failed %>
-<p> Signup failed - please try again </p>
-<% end %>
 
-<form method="post", action="/users">
-  <input type="text" name="name" required="true" placeholder="Name"><br><br>
-  <input type="email" name="email" required="true" placeholder="Email"><br><br>
-  <input type="password" name="password" required="true" placeholder="Password"><br><br>
-  <input type="text" name="phone_number" placeholder="Phone number">
-  <input type="submit" value="Sign up">
-</form>
+<div class="sign_up_container">
+  <div class="sign_up_form">
+    <h1>Sign up</h1>
+    <div class="error_message">
+      <% if @failed %>
+      <h2> Signup failed - please try again </h2><br><br>
+      <% end %>
+    </div>
+    <form method="post", action="/users">
+      <div class="sign_up_boxes">
+        <input type="text" name="name" required="true" placeholder="Name"><br><br>
+        <input type="email" name="email" required="true" placeholder="Email"><br><br>
+        <input type="password" name="password" required="true" placeholder="Password"><br><br>
+        <input type="text" name="phone_number" placeholder="Phone number">
+      </div><br>
+      <div class="create_account_button">
+        <input type="submit" value="Create account">
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+h2 {
+  font-size: 15px;
+  font-style: italic;
+}
+.error_message {
+  color: #ff4d4d;
+}
+.sign_up_boxes {
+  background-color: #f2f2f2;
+  padding: 25px;
+  border-radius: 20px;
+  /*opacity: 0.2;*/
+}
+
+.sign_up_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  position: inherit;
+  justify-content: center;
+
+}
+.sign_up_form {
+  padding-left: 40px;
+  border-radius: 20px;
+}
+
+
+input:hover,
+input:focus {
+  opacity: .7;
+  border: 1px solid #000000;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  box-shadow: inset 0 1px 2px rgba(255,255,255, .35), 0px 1px 15px rgba(0,246,255,.5);
+  border: 1px solid #000000;
+  outline: none;
+}
+
+</style>

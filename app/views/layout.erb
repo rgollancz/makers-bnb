@@ -1,16 +1,174 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Makers BnB</title>
-  </head>
-  <body>
-    <% if current_user %>
-      <p> Logged in as <%= current_user.name %> </p>
-      <form action="/sessions/logout" method="POST" >
-        <input type="submit" value="Logout" />
-    </form>
-      <% end %>
+<head>
+  <meta charset="utf-8">
+  <title>Makers BnB</title>
+</head>
+<body>
+  <header class="solid-banner">
+    <div class="solid-banner__caption">
+      <div class="logo_placement">
+        <a href="/"><img src="http://www.iconsplace.com/icons/preview/white/bed-256.png" style="width:60px;height:40px;"/></a>
+      </div>
+      <div class="user_name">
+        <% if current_user %>
+        <p> Logged in as <%= current_user.name %> </p>
+        <% elsif @logout %>
+        <p>You have logged out!</p>
+        <% else %>
+        <p> Howdy! </p>
+        <% end %>
+      </div>
+      <% if current_user %>
+      <div class="log_out">
+        <form action="/sessions/logout" method="post">
+          <input type="submit" value="Logout"/>
+        </form>
+      </div>
+      <div class="my_bookings">
+        <form action="/bookings" method="get">
+          <input type="submit" value="My Bookings"/>
+        </form>
+        <% else %>
+        <div class="sign_up">
+          <form action="/users/sign_up">
+            <input type="submit" value="Sign up"/>
+          </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="content_container">
     <%= yield %>
-  </body>
+  </section>
+</body>
+
 </html>
+
+<style>
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  box-sizing: border-box;
+  font-family: helvetica;
+  font-size: 75%;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  + h1,
+  + h2,
+  + h3,
+  + p {
+    margin-top: 1rem;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+
+.log_out {
+  position: absolute;
+  right: 20px;
+}
+
+.my_bookings {
+  position: absolute;
+  right: 225px;
+}
+.sign_up {
+  position: absolute;
+  right: 20px;
+}
+.content_container {
+  position: relative;
+  padding-top: 110px;
+  display: flex;
+  position: inherit;
+}
+
+.user_name {
+  padding-top: 12px;
+  font-size: 14px;
+  letter-spacing: 0.7px;
+}
+
+.logo_placement {
+
+}
+
+.solid-banner {
+  left: 0;
+  top: 0;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #008000;
+  z-index: 1;
+}
+
+.solid-banner__caption {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 20px;
+  padding-top: 10px;
+  padding-left: 50px;
+  min-height: inherit;
+  color: white;
+}
+
+h1 {
+  color: black;
+  font-size: 50px;
+  padding-bottom: 10px;
+}
+
+input[type="submit"] {
+  appearance: none;
+  border: none;
+  opacity: .99;
+  width:180px;
+  background: #1a75ff;
+
+  border-radius: 4px;
+  color: #eee;
+  cursor: pointer;
+}
+
+input {
+  display: block;
+  font-size: 14px;
+  width:300px;
+  margin: 2px auto;
+  padding: 10px 8px 10px 8px;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  opacity: 0.4;
+
+}
+.error_message {
+  font-style: italic;
+  color: #ff4d4d;
+}
+
+
+</style>

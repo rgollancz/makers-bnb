@@ -1,22 +1,67 @@
+<head>
+  <meta charset="utf-8">
+  <title>New listing</title>
+</head>
 
-  <head>
-    <meta charset="utf-8">
-    <title>New listing</title>
-  </head>
-  <body>
+<body>
+  <div class="new_space_container">
     <h1>Add a new listing</h1>
-    <% if @failed %>
-    Saving new space failed - please try again
-    <% end %>
-    <form method="post", action="/spaces">
-      Choose a name for your listing<br>
-      <input type="text" name="name" required="true" placeholder="Name"><br><br>
-      Address<br>
-      <input type="text" name="address" required="true" placeholder="Address"><br><br>
-      Describe your property<br>
-      <input type="text" name="description" required="true" placeholder="Description"><br><br>
-      Set the price per night<br>
-      <input type="number" name="price" required="true"  placeholder="Price"><br><br>
-      <input type="submit" value="Save">
-    </form>
-  </body>
+    <div class="error_message">
+      <% if @failed %>
+      Saving new space failed - please try again
+      <% end %>
+    </div>
+    <div class="form_container">
+      <form method="post", action="/spaces">
+        Choose a name for your listing<br>
+        <input type="text" name="name" required="true" placeholder="Name"><br><br>
+        Address<br>
+        <input type="text" name="address" required="true" placeholder="Address"><br><br>
+        Describe your property<br>
+        <input type="text" name="description" required="true" placeholder="Description"><br><br>
+        Set the price per night<br>
+        <input type="number" name="price" required="true"  placeholder="Price"><br><br>
+        <input type="submit" value="Save">
+      </form>
+    </div>
+  </div>
+</body>
+
+
+<style>
+h1 {
+  padding-left: 45px;
+}
+.error_message {
+  color: #ff4d4d;
+}
+.new_space_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  position: inherit;
+}
+.space_deets {
+  background-color: #e6f2ff;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+.form_container {
+  position: inherit;
+  background-color: #e6f2ff;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 15px;
+  border-radius: 4px;
+  /*color: black;
+  font-size: 14px;
+  font-weight: 400;*/
+}
+</style>
